@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+datasource db {
+  provider ="postgresql"
+}
+
+
+model Compte {
+  id        Int       @id @default(autoincrement())
+  Username     String    @unique
+  Password  String
+  createdAt DateTime  @default(now())
+}
+
+
+
+model Product {
+  id         Int         @id @default(autoincrement())
+  title      String      @default("")
+  desc       String      @default("")
+  prix       Float       @default(0)
+  emballage  String      @default("")
+  farmId     Int?        // Optional if some products are not linked to a farm
+  image      String      @default("") // ✅ New field for the image path or URL
+
+  Date  DateTime    @default(now())
+}
