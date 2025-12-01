@@ -21,7 +21,6 @@ export default function HomePage() {
     <>
       {/* ===== NAVBAR ===== */}
       <NavBar
-        scroletoorder={scrollToServices}
         select={setSelectedFarm}
         selected_from_DescoverPage={selectedFarm}
       />

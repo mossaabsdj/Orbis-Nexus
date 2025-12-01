@@ -7,9 +7,10 @@ import {
   Star,
   Calendar,
   Gauge,
+  ArrowRight,
   Fuel,
 } from "lucide-react";
-
+import ContactModal from "@/app/component/ContactModalCars/page";
 // ===== VARIABLES - ALL DATA IN ONE PLACE =====
 const CAROUSEL_CONFIG = {
   autoPlayInterval: 5000,
@@ -157,6 +158,7 @@ export default function CarsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [itemsPerView, setItemsPerView] = useState(3);
+  const [constactModalOpen, setContactModalOpen] = useState(false);
 
   // Responsive handler
   useState(() => {
@@ -190,6 +192,10 @@ export default function CarsCarousel() {
     <div
       className={`relative min-h-screen bg-gradient-to-br ${THEME.colors.background} overflow-hidden`}
     >
+      <ContactModal
+        isOpen={constactModalOpen}
+        setIsOpen={setContactModalOpen}
+      />
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-gray-600/40 via-gray-700/30 to-gray-800/10 rounded-full blur-3xl animate-pulse opacity-70" />
@@ -359,17 +365,25 @@ export default function CarsCarousel() {
                               €{car.price}
                             </div>
                           </div>
-                          <button
-                            className={`px-4 py-2 rounded-lg bg-gradient-to-r ${
-                              THEME.colors.primary
-                            } hover:${
-                              THEME.colors.primaryHover
-                            } text-white text-sm font-semibold transition-all duration-300 ${
-                              hoveredCard === i ? "scale-110" : ""
-                            }`}
-                          >
-                            {CONTENT.buttons.viewDetails}
-                          </button>
+                          <div className="">
+                            <div className="flex items-center gap-4">
+                              <button
+                                onClick={() => setContactModalOpen(true)}
+                                className="group relative px-6 py-2.5 bg-gray-800 rounded-xl border border-gray-700 overflow-hidden transition-all duration-300 hover:border-gray-600 hover:shadow-lg hover:shadow-gray-700/30"
+                              >
+                                {/* Background effect */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                                {/* Content */}
+                                <div className="relative flex items-center gap-2">
+                                  <span className="text-gray-300 group-hover:text-white font-medium text-sm transition-colors duration-300">
+                                    Contact
+                                  </span>
+                                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-all duration-300 group-hover:translate-x-1" />
+                                </div>
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

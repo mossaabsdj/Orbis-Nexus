@@ -1,48 +1,91 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import ContactModal from "@/app/component/ContactModal/page";
 import {
   ChevronLeft,
   ChevronRight,
+  ArrowRight,
   Briefcase,
+  TrendingUp,
   Code,
   Palette,
-  TrendingUp,
   FileText,
   DollarSign,
-  ArrowRight,
+  Factory,
+  Leaf,
+  Car,
+  Shield,
+  AlertTriangle,
+  Truck,
+  Store,
 } from "lucide-react";
 
 const services = [
   {
-    title: "Conseil & Stratégie",
+    title: "Bureau d’affaires",
     icon: Briefcase,
-    desc: "Nous offrons des solutions personnalisées pour le développement et la croissance durable des entreprises.",
+    desc: "Services professionnels dédiés à l’accompagnement des entreprises et au développement des activités commerciales.",
   },
   {
-    title: "Informatique & Numérique",
-    icon: Code,
-    desc: "Accompagnement complet en ingénierie logicielle, développement sur mesure, et transformation digitale.",
-  },
-  {
-    title: "Design & Création Visuelle",
-    icon: Palette,
-    desc: "Conception moderne et élégante d'identités visuelles, UX/UI et communication digitale.",
-  },
-  {
-    title: "Marketing & Communication",
+    title: "Bureau d’agent commercial",
     icon: TrendingUp,
-    desc: "Stratégies marketing efficaces pour renforcer votre présence et votre notoriété sur le marché.",
+    desc: "Représentation, prospection et accompagnement commercial pour développer vos relations d’affaires.",
   },
   {
-    title: "Gestion Administrative & Support",
+    title: "Études & Conseils en Informatique",
+    icon: Code,
+    desc: "Bureau spécialisé en études, développement informatique, solutions numériques et consultance technique.",
+  },
+  {
+    title: "Design & Services de Création",
+    icon: Palette,
+    desc: "Conception d’identités visuelles, design technique et solutions créatives spécialisées.",
+  },
+  {
+    title: "Secrétariat & Gestion Administrative",
     icon: FileText,
-    desc: "Services de secrétariat, assistance à la gestion, et accompagnement administratif complet.",
+    desc: "Services de secrétariat, d’organisation administrative et de conseil en gestion.",
   },
   {
-    title: "Investissement & Conseil Financier",
+    title: "Études & Conseil en Investissement",
     icon: DollarSign,
-    desc: "Études de faisabilité, analyse stratégique et accompagnement pour projets d'investissement.",
+    desc: "Assistance, études et conseils stratégiques pour projets d’investissement.",
+  },
+  {
+    title: "Conseil Industrie & Énergie",
+    icon: Factory,
+    desc: "Accompagnement des entreprises nationales et internationales dans les secteurs industriel et énergétique.",
+  },
+  {
+    title: "Études & Conseil Agricole",
+    icon: Leaf,
+    desc: "Études, assistance et accompagnement technique dans le domaine agricole.",
+  },
+  {
+    title: "Intermédiation Vente Véhicules",
+    icon: Car,
+    desc: "Intermédiaire commercial pour la vente de voitures et motos importées de Corée du Sud et de pays européens.",
+  },
+  {
+    title: "Institut d’Études & Programmes Environnementaux",
+    icon: Shield,
+    desc: "Études et réalisation de programmes de prévention et de protection de l’environnement.",
+  },
+  {
+    title: "Institut de Prévention des Risques Professionnels",
+    icon: AlertTriangle,
+    desc: "Organisation spécialisée dans la prévention des dangers et risques professionnels.",
+  },
+  {
+    title: "Conseil & Assistance Logistique",
+    icon: Truck,
+    desc: "Bureau de conseil, d’études et d’assistance dans le domaine logistique.",
+  },
+  {
+    title: "Conseils & Études en Domaines Commerciaux",
+    icon: Store,
+    desc: "Bureau spécialisé dans les études et conseils liés aux activités et secteurs commerciaux.",
   },
 ];
 
@@ -71,10 +114,14 @@ export default function ModernServicesPage() {
 
   const next = () => setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
   const prev = () => setCurrentIndex((prev) => Math.max(prev - 1, 0));
-
+  const [constactModalOpen, setContactModalOpen] = useState(false);
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-black via-neutral-900 to-gray-800 overflow-hidden">
       {/* Animated Background Elements */}
+      <ContactModal
+        isOpen={constactModalOpen}
+        setIsOpen={setContactModalOpen}
+      />
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-gray-600/40 via-gray-700/30 to-gray-800/10 rounded-full blur-3xl animate-pulse opacity-70"
@@ -139,38 +186,37 @@ export default function ModernServicesPage() {
                 return (
                   <div
                     key={i}
-                    className="flex-shrink-0 px-2"
+                    className="flex-shrink-0 px-2 "
                     style={{ width: `${100 / itemsPerView}%` }}
                     onMouseEnter={() => setHoveredCard(i)}
                     onMouseLeave={() => setHoveredCard(null)}
                   >
                     <div
-                      className={`relative group h-full rounded-3xl overflow-hidden transition-all duration-500 ${
-                        hoveredCard === i ? "scale-105" : ""
+                      className={` relative group h-full rounded-3xl z-0 overflow-hidden transition-all duration-500 ${
+                        hoveredCard === i ? "scale-100" : ""
                       }`}
                     >
                       {/* Card Background with Gradient */}
                       <div
-                        className={`absolute inset-0 bg-gradient-to-br from-gray-700/20 to-gray-900/20 opacity-50 transition-opacity duration-500 ${
+                        className={`absolute inset-0 z-0 bg-gradient-to-br from-gray-700/20 to-gray-900/20 opacity-50 transition-opacity duration-500 ${
                           hoveredCard === i ? "opacity-100" : ""
                         }`}
                       />
 
                       {/* Glass Effect Background */}
-                      <div className="absolute inset-0 bg-neutral-800/40 backdrop-blur-xl border border-neutral-700/50" />
+                      <div className="absolute inset-0 z-0 bg-neutral-800/40 backdrop-blur-xl border border-neutral-700/50" />
 
                       {/* Hover Glow Effect */}
                       <div
-                        className={`absolute inset-0 bg-gradient-to-br from-gray-500/20 to-gray-700/20 opacity-0 blur-2xl transition-opacity duration-500 ${
+                        className={`absolute inset-0 z-0 bg-gradient-to-br from-gray-500/20 to-gray-700/20 opacity-0 blur-2xl transition-opacity duration-500 ${
                           hoveredCard === i ? "opacity-30" : ""
                         }`}
                       />
-
                       {/* Content */}
-                      <div className="relative p-6 md:p-8 h-full flex flex-col min-h-[380px] md:min-h-[420px]">
+                      <div className=" relative z-10 p-6 md:p-8 h-full flex flex-col min-h-[380px] md:min-h-[420px]">
                         {/* Icon */}
                         <div
-                          className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center mb-6 transform transition-transform duration-500 shadow-lg ${
+                          className={`w-14 h-14 md:w-16  md:h-16 rounded-2xl bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center mb-6 transform transition-transform duration-500 shadow-lg ${
                             hoveredCard === i ? "rotate-6 scale-110" : ""
                           }`}
                         >
@@ -188,30 +234,39 @@ export default function ModernServicesPage() {
                         </p>
 
                         {/* Action Link */}
-                        <div
-                          className={`flex items-center gap-2 text-sm font-medium text-gray-300 transition-all duration-300 ${
-                            hoveredCard === i
-                              ? "translate-x-2 text-gray-100"
-                              : ""
-                          }`}
-                        >
-                          <span>En savoir plus</span>
-                          <ArrowRight
-                            className={`w-4 h-4 transition-transform duration-300 ${
-                              hoveredCard === i ? "translate-x-1" : ""
-                            }`}
-                          />
+                        {/* Style 6: Inline with Text (For Card Usage) */}
+                        <div className="">
+                          <div className="flex items-center gap-4">
+                            <span className="text-gray-300 text-sm">
+                              En savoir plus
+                            </span>
+                            <button
+                              onClick={() => setContactModalOpen(true)}
+                              className="group relative px-6 py-2.5 bg-gray-800 rounded-xl border border-gray-700 overflow-hidden transition-all duration-300 hover:border-gray-600 hover:shadow-lg hover:shadow-gray-700/30"
+                            >
+                              {/* Background effect */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                              {/* Content */}
+                              <div className="relative flex items-center gap-2">
+                                <span className="text-gray-300 group-hover:text-white font-medium text-sm transition-colors duration-300">
+                                  Contact
+                                </span>
+                                <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-all duration-300 group-hover:translate-x-1" />
+                              </div>
+                            </button>
+                          </div>
                         </div>
                       </div>
 
                       {/* Animated Border */}
                       <div
-                        className={`absolute inset-0 rounded-3xl transition-opacity duration-500 pointer-events-none ${
-                          hoveredCard === i ? "opacity-100" : "opacity-0"
+                        className={`absolute inset-0 rounded-3xl transition-opacity duration-500 pointer-events-none z-0 ${
+                          hoveredCard === i ? "opacity-100 " : "opacity-0"
                         }`}
                       >
-                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-gray-600 to-gray-800 p-[2px]">
-                          <div className="w-full h-full rounded-3xl bg-neutral-900" />
+                        <div className="absolute inset-0 rounded-3xl  bg-gradient-to-r from-gray-600 to-gray-800 p-[2px]">
+                          <div className="w-full h-full rounded-3xl  bg-neutral-900" />
                         </div>
                       </div>
                     </div>

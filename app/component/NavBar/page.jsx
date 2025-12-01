@@ -11,7 +11,17 @@ import {
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X, User, LogOut, LayoutDashboard, LogIn } from "lucide-react";
+import {
+  Menu,
+  X,
+  User,
+  LogOut,
+  LayoutDashboard,
+  LogIn,
+  Home,
+  Briefcase,
+  Car,
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -24,12 +34,16 @@ import Progression from "@/app/component/Proogression/page";
 
 const TEXTS = {
   brandName: "Orbis Nexus",
-  navItems: ["Home", "Service 01", "Service 02", "Service 03", "Service 04"],
+  navItems: [
+    { label: "Accueil", icon: Home },
+    { label: "Services", icon: Briefcase },
+    { label: "Intermédiation automobile", icon: Car },
+  ],
 };
 
 export default function AppNavbar({ select, selected_from_DescoverPage }) {
   const [open, setOpen] = React.useState(false);
-  const [SelectedItem, setSelectedItem] = React.useState("Home");
+  const [SelectedItem, setSelectedItem] = React.useState("Accueil");
   const [isLoading, setIsLoading] = React.useState(false);
   const router = useRouter();
   const { data: session } = useSession();
@@ -84,27 +98,33 @@ export default function AppNavbar({ select, selected_from_DescoverPage }) {
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList className="flex gap-6">
-              {TEXTS.navItems.map((item) => (
-                <NavigationMenuItem key={item}>
-                  <motion.button
-                    onClick={() => {
-                      select(item);
-                      setSelectedItem(item);
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    animate={
-                      SelectedItem === item ? { scale: 1.08 } : { scale: 1 }
-                    }
-                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
-                      SelectedItem === item
-                        ? "bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white shadow-md"
-                        : "text-gray-300 hover:text-white hover:bg-neutral-800/50"
-                    }`}
-                  >
-                    {item}
-                  </motion.button>
-                </NavigationMenuItem>
-              ))}
+              {TEXTS.navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <NavigationMenuItem key={item.label}>
+                    <motion.button
+                      onClick={() => {
+                        select(item.label);
+                        setSelectedItem(item.label);
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      animate={
+                        SelectedItem === item.label
+                          ? { scale: 1.08 }
+                          : { scale: 1 }
+                      }
+                      className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                        SelectedItem === item.label
+                          ? "bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white shadow-md"
+                          : "text-gray-300 hover:text-white hover:bg-neutral-800/50"
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" />
+                      {item.label}
+                    </motion.button>
+                  </NavigationMenuItem>
+                );
+              })}
 
               {/* Account Dropdown */}
               <DropdownMenu>
@@ -174,27 +194,33 @@ export default function AppNavbar({ select, selected_from_DescoverPage }) {
                 className="w-[80%] sm:w-[60%] p-6 bg-neutral-900 text-gray-100 border-r border-neutral-800"
               >
                 <div className="space-y-4 mt-4">
-                  {TEXTS.navItems.map((item) => (
-                    <motion.button
-                      key={item}
-                      onClick={() => {
-                        select(item);
-                        setSelectedItem(item);
-                        setOpen(false);
-                      }}
-                      whileTap={{ scale: 0.97 }}
-                      animate={
-                        SelectedItem === item ? { scale: 1.05 } : { scale: 1 }
-                      }
-                      className={`block w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                        SelectedItem === item
-                          ? "bg-gradient-to-r from-gray-700 to-gray-900 text-white"
-                          : "text-gray-300 hover:bg-neutral-800/50"
-                      }`}
-                    >
-                      {item}
-                    </motion.button>
-                  ))}
+                  {TEXTS.navItems.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <motion.button
+                        key={item.label}
+                        onClick={() => {
+                          select(item.label);
+                          setSelectedItem(item.label);
+                          setOpen(false);
+                        }}
+                        whileTap={{ scale: 0.97 }}
+                        animate={
+                          SelectedItem === item.label
+                            ? { scale: 1.05 }
+                            : { scale: 1 }
+                        }
+                        className={`flex items-center gap-2 w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                          SelectedItem === item.label
+                            ? "bg-gradient-to-r from-gray-700 to-gray-900 text-white"
+                            : "text-gray-300 hover:bg-neutral-800/50"
+                        }`}
+                      >
+                        <Icon className="w-4 h-4" />
+                        {item.label}
+                      </motion.button>
+                    );
+                  })}
 
                   {/* Mobile Account Options */}
                   <div className="pt-6 border-t border-neutral-800 space-y-2">

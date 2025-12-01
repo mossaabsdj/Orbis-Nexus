@@ -8,14 +8,14 @@ import { signIn } from "next-auth/react";
 import Progression from "@/app/component/Proogression/page";
 
 const COLORS = {
-  formBg: "bg-gray-900",
+  formBg: "bg-gradient-to-r from-gray-700 to-gray-800",
   formBorder: "border-gray-700",
   formFocus: "focus:ring-2 focus:ring-gray-600 focus:border-gray-600",
   buttonBg: "bg-gradient-to-r from-gray-700 to-gray-800",
   buttonHover: "hover:from-gray-600 hover:to-gray-700",
   socialBg: "bg-gray-800",
   socialHover: "hover:bg-gray-700",
-  paneBg: "bg-gradient-to-br from-gray-950 to-gray-900",
+  paneBg: "bg-gradient-to-br from-black via-black to-gray-700",
 };
 
 const SOCIAL_ICONS = [
@@ -179,7 +179,7 @@ export default function FlipAuthPages() {
       {isLoading && <Progression isVisible={true} />}
       {showOtpModal && <></>}
       {showForogtOtpModal && <></>}
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-neutral-900 to-gray-800 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-black to-black p-4">
         <div className="w-full max-w-6xl" style={{ perspective: "2000px" }}>
           <div
             className="relative w-full transition-transform duration-700"
@@ -197,9 +197,9 @@ export default function FlipAuthPages() {
                 transform: "rotateY(0deg)",
               }}
             >
-              <div className="flex flex-col md:flex-row bg-gray-950 border-2 border-gray-800 rounded-3xl shadow-2xl overflow-hidden">
+              <div className="flex flex-col md:flex-row  border-2 border-gray-800  rounded-3xl shadow-2xl overflow-hidden">
                 {/* Login Form */}
-                <div className="w-full md:w-1/2 p-8 flex flex-col justify-center items-center order-1 bg-gradient-to-br from-gray-900 to-gray-950">
+                <div className="w-full md:w-1/2 p-8 flex flex-col border-r-5 border-r-gray-800 justify-center items-center order-1 bg-gradient-to-br from-gray-700 via-black to-black">
                   <div className="w-full max-w-sm">
                     <h2 className="text-5xl font-extrabold text-white mb-2 text-center">
                       Log In
@@ -259,10 +259,9 @@ export default function FlipAuthPages() {
                 </div>
 
                 {/* Welcome Section - Right */}
-
                 <WelcomeSection
                   title="Welcome Back!"
-                  description="Manage your orders, explore new products, and connect with your favorite farms — all from one place."
+                  description="Ajoutez, explorez et gérez vos voitures et leurs informations en toute simplicité."
                   isRight={true}
                 />
               </div>
