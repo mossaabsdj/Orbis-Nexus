@@ -1,16 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
-  Star,
-  Calendar,
+  Zap,
+  Droplet,
   Gauge,
-  ArrowRight,
+  Settings,
+  Users,
+  Navigation,
+  Palette,
+  Cpu,
   Fuel,
+  Calendar,
+  ArrowRight,
+  MessageCircle,
 } from "lucide-react";
 import ContactModal from "@/app/component/ContactModalCars/page";
+import { fetchData } from "@/lib/FetchData/page";
+
 // ===== VARIABLES - ALL DATA IN ONE PLACE =====
 const CAROUSEL_CONFIG = {
   autoPlayInterval: 5000,
@@ -20,103 +29,6 @@ const CAROUSEL_CONFIG = {
     desktop: 3,
   },
 };
-
-const CARS_DATA = [
-  {
-    id: 1,
-    name: "Mercedes-Benz S-Class",
-    category: "Luxury Sedan",
-    year: "2024",
-    price: "120,000",
-    image: "/images/car1.jpg",
-    rating: 4.9,
-    specs: {
-      power: "450 HP",
-      fuel: "Hybrid",
-      speed: "250 km/h",
-    },
-    description:
-      "L'élégance et la performance redéfinies dans un véhicule de luxe exceptionnel.",
-  },
-  {
-    id: 2,
-    name: "BMW M5 Competition",
-    category: "Sport Sedan",
-    year: "2024",
-    price: "135,000",
-    image: "/images/car1.jpg",
-    rating: 4.8,
-    specs: {
-      power: "625 HP",
-      fuel: "Essence",
-      speed: "305 km/h",
-    },
-    description: "Performances sportives ultimes avec un raffinement inégalé.",
-  },
-  {
-    id: 3,
-    name: "Audi RS7 Sportback",
-    category: "Gran Turismo",
-    year: "2024",
-    price: "128,000",
-    image: "/images/car1.jpg",
-    rating: 4.7,
-    specs: {
-      power: "600 HP",
-      fuel: "Essence",
-      speed: "280 km/h",
-    },
-    description:
-      "Design audacieux et technologie de pointe pour une expérience unique.",
-  },
-  {
-    id: 4,
-    name: "Porsche Panamera Turbo S",
-    category: "Sport Sedan",
-    year: "2024",
-    price: "185,000",
-    image: "/images/car1.jpg",
-    rating: 5.0,
-    specs: {
-      power: "630 HP",
-      fuel: "Hybrid",
-      speed: "315 km/h",
-    },
-    description: "L'essence de la performance Porsche dans un format familial.",
-  },
-  {
-    id: 5,
-    name: "Tesla Model S Plaid",
-    category: "Electric Sedan",
-    year: "2024",
-    price: "110,000",
-    image: "/images/car1.jpg",
-    rating: 4.6,
-    specs: {
-      power: "1020 HP",
-      fuel: "Electric",
-      speed: "322 km/h",
-    },
-    description:
-      "L'avenir de l'automobile électrique avec des performances époustouflantes.",
-  },
-  {
-    id: 6,
-    name: "Lexus LS 500h",
-    category: "Luxury Sedan",
-    year: "2024",
-    price: "95,000",
-    image: "/images/car1.jpg",
-    rating: 4.5,
-    specs: {
-      power: "354 HP",
-      fuel: "Hybrid",
-      speed: "250 km/h",
-    },
-    description:
-      "Confort japonais et fiabilité légendaire dans un écrin de luxe.",
-  },
-];
 
 const THEME = {
   colors: {
@@ -159,12 +71,20 @@ export default function CarsCarousel() {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [itemsPerView, setItemsPerView] = useState(3);
   const [constactModalOpen, setContactModalOpen] = useState(false);
+  const [CARS_DATA, setCarsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   // Responsive handler
-  useState(() => {
+  useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
-        if (window.innerWidth < 768) {
+        const mobile = window.innerWidth < 768;
+        setIsMobile(mobile);
+
+        if (mobile) {
           setItemsPerView(CAROUSEL_CONFIG.itemsPerView.mobile);
         } else if (window.innerWidth < 1024) {
           setItemsPerView(CAROUSEL_CONFIG.itemsPerView.tablet);
@@ -179,7 +99,28 @@ export default function CarsCarousel() {
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
-  });
+  }, []);
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchData({ method: "GET", url: "/api/Product" });
+        if (data && Array.isArray(data)) {
+          setCarsData(data);
+        } else {
+          setCarsData([]);
+        }
+      } catch (err) {
+        console.error("Failed to fetch products:", err);
+        setCarsData([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCars();
+  }, []);
 
   const maxIndex = Math.max(0, CARS_DATA.length - itemsPerView);
 
@@ -187,6 +128,57 @@ export default function CarsCarousel() {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   const prev = () =>
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+
+  // Touch handlers for mobile (disabled swipe)
+  const handleTouchStart = (e) => {
+    if (!isMobile) {
+      setTouchStart(e.targetTouches[0].clientX);
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isMobile) {
+      setTouchEnd(e.targetTouches[0].clientX);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (!isMobile && touchStart - touchEnd > 75) {
+      next();
+    }
+    if (!isMobile && touchStart - touchEnd < -75) {
+      prev();
+    }
+  };
+
+  const getSpecs = (car) => {
+    const specs = [
+      { icon: Zap, label: car.power, title: "Power" },
+      { icon: Droplet, label: car.fuel, title: "Fuel Type" },
+      { icon: Gauge, label: car.speed, title: "Top Speed" },
+      { icon: Settings, label: car.transmission, title: "Transmission" },
+      {
+        icon: Users,
+        label: car.seats ? `${car.seats} Seats` : null,
+        title: "Seating",
+      },
+      {
+        icon: Navigation,
+        label: car.mileage ? `${car.mileage} km` : null,
+        title: "Mileage",
+      },
+      { icon: Palette, label: car.color, title: "Color", isColor: true },
+      { icon: Cpu, label: car.engine, title: "Engine" },
+      {
+        icon: Fuel,
+        label: car.fuelCapacity ? `${car.fuelCapacity}L` : null,
+        title: "Tank",
+      },
+      { icon: Calendar, label: car.year, title: "Year" },
+    ].filter((spec) => spec.label);
+
+    return specs;
+  };
 
   return (
     <div
@@ -196,6 +188,7 @@ export default function CarsCarousel() {
         isOpen={constactModalOpen}
         setIsOpen={setContactModalOpen}
       />
+
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-gray-600/40 via-gray-700/30 to-gray-800/10 rounded-full blur-3xl animate-pulse opacity-70" />
@@ -244,7 +237,12 @@ export default function CarsCarousel() {
       <section className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-24">
         <div className="relative">
           {/* Cards Container */}
-          <div className="overflow-hidden">
+          <div
+            className="overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div
               className="flex transition-transform duration-500 ease-out gap-6"
               style={{
@@ -253,128 +251,159 @@ export default function CarsCarousel() {
                 }%)`,
               }}
             >
-              {CARS_DATA.map((car, i) => (
-                <div
-                  key={car.id}
-                  className="flex-shrink-0 px-2"
-                  style={{ width: `${100 / itemsPerView}%` }}
-                  // onMouseEnter={() => setHoveredCard(i)}
-                  // onMouseLeave={() => setHoveredCard(null)}
-                >
+              {CARS_DATA.map((car, i) => {
+                const specs = getSpecs(car);
+
+                return (
                   <div
-                    className={`relative group h-full rounded-3xl overflow-hidden transition-all duration-500 ${
-                      hoveredCard === i ? "scale-105" : ""
-                    }`}
+                    key={car.id}
+                    className="flex-shrink-0 px-2"
+                    style={{ width: `${100 / itemsPerView}%` }}
                   >
-                    {/* Card Background */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br from-gray-700/20 to-gray-900/20 opacity-50 transition-opacity duration-500 ${
-                        hoveredCard === i ? "opacity-100" : ""
-                      }`}
-                    />
+                      className={`relative group h-full rounded-3xl overflow-hidden transition-all duration-500`}
+                      onMouseEnter={() => !isMobile && setHoveredCard(i)}
+                      onMouseLeave={() => !isMobile && setHoveredCard(null)}
+                    >
+                      {/* Card Background */}
+                      <div
+                        className={`absolute inset-0 z-0 bg-gradient-to-br from-gray-700/20 to-gray-900/20 opacity-50 transition-opacity duration-500 ${
+                          hoveredCard === i ? "opacity-100" : ""
+                        }`}
+                      />
 
-                    {/* Glass Effect */}
-                    <div
-                      className={`absolute inset-0 ${THEME.colors.card} ${THEME.effects.blur} border ${THEME.colors.border}`}
-                    />
+                      {/* Glass Effect */}
+                      <div
+                        className={`absolute inset-0 z-0 ${THEME.colors.card} ${THEME.effects.blur} border ${THEME.colors.border}`}
+                      />
 
-                    {/* Hover Glow */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br from-gray-500/20 to-gray-700/20 opacity-0 blur-2xl transition-opacity duration-500 ${
-                        hoveredCard === i ? "opacity-30" : ""
-                      }`}
-                    />
+                      {/* Hover Glow */}
+                      <div
+                        className={`absolute inset-0 z-5 bg-gradient-to-br from-gray-500/20 to-gray-700/20 opacity-0 blur-2xl transition-opacity duration-500 ${
+                          hoveredCard === i ? "opacity-30" : ""
+                        }`}
+                      />
 
-                    {/* Content */}
-                    <div className="relative p-6 md:p-8 h-full flex flex-col min-h-[550px] md:min-h-[600px]">
-                      {/* Image */}
-                      <div className="relative w-full h-48 md:h-56 rounded-2xl overflow-hidden mb-6">
-                        <img
-                          src={car.image}
-                          alt={car.name}
-                          className="w-full h-full object-cover brightness-95"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      {/* Content */}
+                      <div className="relative z-10 p-6 md:p-8 h-full flex flex-col min-h-[550px] md:min-h-[600px]">
+                        {/* Image */}
+                        <div className="relative w-full h-48 md:h-56 rounded-2xl overflow-hidden mb-6">
+                          <img
+                            src={car.image}
+                            alt={car.name}
+                            className="w-full h-full object-cover brightness-95"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                        {/* Rating Badge */}
-                        <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-neutral-900/80 backdrop-blur-sm">
-                          <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
-                          <span className="text-xs text-white font-bold">
-                            {car.rating}
-                          </span>
-                        </div>
-
-                        {/* Category Badge */}
-                        <div className="absolute bottom-3 left-3 px-3 py-1 rounded-lg bg-neutral-900/80 backdrop-blur-sm">
-                          <span className="text-xs text-gray-300 font-medium">
-                            {car.category}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Car Info */}
-                      <div className="flex-grow space-y-4">
-                        <div>
-                          <h3
-                            className={`text-xl md:text-2xl font-bold ${THEME.colors.text.primary} mb-2 leading-tight`}
-                          >
-                            {car.name}
-                          </h3>
-                          <p
-                            className={`text-sm ${THEME.colors.text.secondary} leading-relaxed`}
-                          >
-                            {car.description}
-                          </p>
-                        </div>
-
-                        {/* Specs */}
-                        <div className="grid grid-cols-3 gap-3">
-                          <div className="flex flex-col items-center p-2 rounded-lg bg-neutral-800/50">
-                            <Gauge className="w-4 h-4 text-gray-400 mb-1" />
-                            <span className="text-xs text-gray-400">
-                              {car.specs.power}
-                            </span>
-                          </div>
-                          <div className="flex flex-col items-center p-2 rounded-lg bg-neutral-800/50">
-                            <Fuel className="w-4 h-4 text-gray-400 mb-1" />
-                            <span className="text-xs text-gray-400">
-                              {car.specs.fuel}
-                            </span>
-                          </div>
-                          <div className="flex flex-col items-center p-2 rounded-lg bg-neutral-800/50">
-                            <Calendar className="w-4 h-4 text-gray-400 mb-1" />
-                            <span className="text-xs text-gray-400">
-                              {car.year}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Price & CTA */}
-                      <div className="mt-6 pt-6 border-t border-neutral-800">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <span
-                              className={`text-xs ${THEME.colors.text.muted}`}
-                            >
-                              À partir de
-                            </span>
-                            <div
-                              className={`text-2xl font-bold bg-gradient-to-r ${THEME.colors.secondary} bg-clip-text text-transparent`}
-                            >
-                              €{car.price}
+                          {/* Category Badge */}
+                          {car.category && (
+                            <div className="absolute bottom-3 left-3 px-3 py-1 rounded-lg bg-neutral-900/80 backdrop-blur-sm">
+                              <span className="text-xs text-gray-300 font-medium">
+                                {car.category}
+                              </span>
                             </div>
+                          )}
+                        </div>
+
+                        {/* Car Info */}
+                        <div className="flex-grow space-y-4">
+                          <div>
+                            <h3
+                              className={`text-xl md:text-2xl font-bold ${THEME.colors.text.primary} mb-2 leading-tight`}
+                            >
+                              {car.name}- {car.year}
+                            </h3>
+                            {car.description && (
+                              <p
+                                className={`text-sm ${THEME.colors.text.secondary} leading-relaxed`}
+                              >
+                                {car.description}
+                              </p>
+                            )}
                           </div>
-                          <div className="">
+
+                          {/* Specs Grid */}
+                          <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                            {car.power && (
+                              <div className="flex flex-col items-center p-2 rounded-lg bg-neutral-800/50">
+                                <Zap className="w-4 h-4 text-gray-400 mb-1" />
+                                <span className="text-xs text-gray-400">
+                                  {car.power}
+                                </span>
+                              </div>
+                            )}
+                            {car.fuel && (
+                              <div className="flex flex-col items-center p-2 rounded-lg bg-neutral-800/50">
+                                <Droplet className="w-4 h-4 text-gray-400 mb-1" />
+                                <span className="text-xs text-gray-400">
+                                  {car.fuel}
+                                </span>
+                              </div>
+                            )}
+                            {car.fuelCapacity && (
+                              <div className="flex flex-col items-center p-2 rounded-lg bg-neutral-800/50">
+                                <Fuel className="w-4 h-4 text-gray-400 mb-1" />
+                                <span className="text-xs text-gray-400">
+                                  {car.fuelCapacity} L
+                                </span>
+                              </div>
+                            )}
+                            {car.speed && (
+                              <div className="flex flex-col items-center p-2 rounded-lg bg-neutral-800/50">
+                                <Gauge className="w-4 h-4 text-gray-400 mb-1" />
+                                <span className="text-xs text-gray-400">
+                                  {car.speed}
+                                </span>
+                              </div>
+                            )}
+                            {car.transmission && (
+                              <div className="flex flex-col items-center p-2 rounded-lg bg-neutral-800/50">
+                                <Settings className="w-4 h-4 text-gray-400 mb-1" />
+                                <span className="text-xs text-gray-400">
+                                  {car.transmission}
+                                </span>
+                              </div>
+                            )}
+                            {car.seats && (
+                              <div className="flex flex-col items-center p-2 rounded-lg bg-neutral-800/50">
+                                <Users className="w-4 h-4 text-gray-400 mb-1" />
+                                <span className="text-xs text-gray-400">
+                                  {car.seats} Seats
+                                </span>
+                              </div>
+                            )}
+                            {(car.mileage || car.mileage === 0) && (
+                              <div className="flex flex-col items-center p-2 rounded-lg bg-neutral-800/50">
+                                <Navigation className="w-4 h-4 text-gray-400 mb-1" />
+                                <span className="text-xs text-gray-400">
+                                  {car.mileage} km
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Price & CTA */}
+                        <div className="mt-6 pt-6 border-t border-neutral-800">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <span
+                                className={`text-xs ${THEME.colors.text.muted}`}
+                              >
+                                À partir de
+                              </span>
+                              <div
+                                className={`text-2xl font-bold bg-gradient-to-r ${THEME.colors.secondary} bg-clip-text text-transparent`}
+                              >
+                                {car.price} DA
+                              </div>
+                            </div>
                             <div className="flex items-center gap-4">
                               <button
                                 onClick={() => setContactModalOpen(true)}
                                 className="group relative px-6 py-2.5 bg-gray-800 rounded-xl border border-gray-700 overflow-hidden transition-all duration-300 hover:border-gray-600 hover:shadow-lg hover:shadow-gray-700/30"
                               >
-                                {/* Background effect */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                                {/* Content */}
                                 <div className="relative flex items-center gap-2">
                                   <span className="text-gray-300 group-hover:text-white font-medium text-sm transition-colors duration-300">
                                     Contact
@@ -386,23 +415,23 @@ export default function CarsCarousel() {
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Animated Border */}
-                    <div
-                      className={`absolute inset-0 rounded-3xl transition-opacity duration-500 pointer-events-none ${
-                        hoveredCard === i ? "opacity-100" : "opacity-0"
-                      }`}
-                    >
+                      {/* Animated Border */}
                       <div
-                        className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${THEME.colors.secondary} p-[2px]`}
+                        className={`absolute inset-0 z-20 rounded-3xl transition-opacity duration-500 pointer-events-none ${
+                          hoveredCard === i ? "opacity-100" : "opacity-0"
+                        }`}
                       >
-                        <div className="w-full h-full rounded-3xl bg-neutral-900" />
+                        <div
+                          className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${THEME.colors.secondary} p-[2px]`}
+                        >
+                          <div className="w-full h-full rounded-3xl bg-neutral-900" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 

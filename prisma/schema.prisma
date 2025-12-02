@@ -23,13 +23,22 @@ model Compte {
 
 
 model Product {
-  id         Int         @id @default(autoincrement())
-  title      String      @default("")
-  desc       String      @default("")
-  prix       Float       @default(0)
-  emballage  String      @default("")
-  farmId     Int?        // Optional if some products are not linked to a farm
-  image      String      @default("") // ✅ New field for the image path or URL
+  id          Int       @id @default(autoincrement())
+  name        String                   // Car name / model
+  category    String?                   // e.g., "Luxury Sedan", "SUV"
+  year        Int?                      // Manufacturing year
+  price       Float     @default(0)     // Price in USD or local currency
+  image       String?                   // Image URL or path
+  description String?                   // Detailed description
 
-  Date  DateTime    @default(now())
+  // Car specifications
+  power       String?                    // e.g., "450 HP"
+  fuel        String?                    // e.g., "Hybrid", "Petrol", "Diesel"
+  speed       String?                    // Top speed, e.g., "250 km/h"
+  transmission String?                   // e.g., "Automatic", "Manual"
+  seats       Int?                        // Number of seats
+  mileage     Float?                      // Mileage in km/l or mpg
+  fuelCapacity Float?                     // Fuel tank capacity in liters
+
+  createdAt   DateTime  @default(now())
 }

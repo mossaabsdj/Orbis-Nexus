@@ -86,9 +86,14 @@ const Page = ({ object, data, AddModel, ViewModel }) => {
 
   const handleDelete = async () => {
     setloading(true);
+    console.log(selectedId);
     try {
-      const res = await fetch(`/api/Product/${selectedId}`, {
+      const res = await fetch(`/api/Product`, {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: selectedId }),
       });
 
       if (res.ok) {
@@ -179,6 +184,14 @@ const Page = ({ object, data, AddModel, ViewModel }) => {
   if (!Array.isArray(object) || object.length === 0) {
     return (
       <>
+        <AddModel open={open} onClose={handleReload} data={data} />
+
+        <Button
+          onClick={handleAdd}
+          className="bg-green-600 hover:bg-green-700 text-white w-full"
+        >
+          + {Labels.Add}
+        </Button>
         <Table>
           <TableHeader>
             <TableRow>

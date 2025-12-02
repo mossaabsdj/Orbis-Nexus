@@ -41,7 +41,7 @@ export async function PUT(request, { params }) {
 export async function DELETE(req, { params }) {
   const id = Number(params.id);
   // First, delete all commandes related to this product
-
+  console.log("hiiiiiiiiiiii" + JSON.stringify(params));
   // Then, delete the product itself
   await prisma.product.delete({
     where: { id },

@@ -28,94 +28,148 @@ export type AggregateProduct = {
 
 export type ProductAvgAggregateOutputType = {
   id: number | null
-  prix: number | null
-  farmId: number | null
+  year: number | null
+  price: number | null
+  seats: number | null
+  mileage: number | null
+  fuelCapacity: number | null
 }
 
 export type ProductSumAggregateOutputType = {
   id: number | null
-  prix: number | null
-  farmId: number | null
+  year: number | null
+  price: number | null
+  seats: number | null
+  mileage: number | null
+  fuelCapacity: number | null
 }
 
 export type ProductMinAggregateOutputType = {
   id: number | null
-  title: string | null
-  desc: string | null
-  prix: number | null
-  emballage: string | null
-  farmId: number | null
+  name: string | null
+  category: string | null
+  year: number | null
+  price: number | null
   image: string | null
-  Date: Date | null
+  description: string | null
+  power: string | null
+  fuel: string | null
+  speed: string | null
+  transmission: string | null
+  seats: number | null
+  mileage: number | null
+  fuelCapacity: number | null
+  createdAt: Date | null
 }
 
 export type ProductMaxAggregateOutputType = {
   id: number | null
-  title: string | null
-  desc: string | null
-  prix: number | null
-  emballage: string | null
-  farmId: number | null
+  name: string | null
+  category: string | null
+  year: number | null
+  price: number | null
   image: string | null
-  Date: Date | null
+  description: string | null
+  power: string | null
+  fuel: string | null
+  speed: string | null
+  transmission: string | null
+  seats: number | null
+  mileage: number | null
+  fuelCapacity: number | null
+  createdAt: Date | null
 }
 
 export type ProductCountAggregateOutputType = {
   id: number
-  title: number
-  desc: number
-  prix: number
-  emballage: number
-  farmId: number
+  name: number
+  category: number
+  year: number
+  price: number
   image: number
-  Date: number
+  description: number
+  power: number
+  fuel: number
+  speed: number
+  transmission: number
+  seats: number
+  mileage: number
+  fuelCapacity: number
+  createdAt: number
   _all: number
 }
 
 
 export type ProductAvgAggregateInputType = {
   id?: true
-  prix?: true
-  farmId?: true
+  year?: true
+  price?: true
+  seats?: true
+  mileage?: true
+  fuelCapacity?: true
 }
 
 export type ProductSumAggregateInputType = {
   id?: true
-  prix?: true
-  farmId?: true
+  year?: true
+  price?: true
+  seats?: true
+  mileage?: true
+  fuelCapacity?: true
 }
 
 export type ProductMinAggregateInputType = {
   id?: true
-  title?: true
-  desc?: true
-  prix?: true
-  emballage?: true
-  farmId?: true
+  name?: true
+  category?: true
+  year?: true
+  price?: true
   image?: true
-  Date?: true
+  description?: true
+  power?: true
+  fuel?: true
+  speed?: true
+  transmission?: true
+  seats?: true
+  mileage?: true
+  fuelCapacity?: true
+  createdAt?: true
 }
 
 export type ProductMaxAggregateInputType = {
   id?: true
-  title?: true
-  desc?: true
-  prix?: true
-  emballage?: true
-  farmId?: true
+  name?: true
+  category?: true
+  year?: true
+  price?: true
   image?: true
-  Date?: true
+  description?: true
+  power?: true
+  fuel?: true
+  speed?: true
+  transmission?: true
+  seats?: true
+  mileage?: true
+  fuelCapacity?: true
+  createdAt?: true
 }
 
 export type ProductCountAggregateInputType = {
   id?: true
-  title?: true
-  desc?: true
-  prix?: true
-  emballage?: true
-  farmId?: true
+  name?: true
+  category?: true
+  year?: true
+  price?: true
   image?: true
-  Date?: true
+  description?: true
+  power?: true
+  fuel?: true
+  speed?: true
+  transmission?: true
+  seats?: true
+  mileage?: true
+  fuelCapacity?: true
+  createdAt?: true
   _all?: true
 }
 
@@ -207,13 +261,20 @@ export type ProductGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type ProductGroupByOutputType = {
   id: number
-  title: string
-  desc: string
-  prix: number
-  emballage: string
-  farmId: number | null
-  image: string
-  Date: Date
+  name: string
+  category: string | null
+  year: number | null
+  price: number
+  image: string | null
+  description: string | null
+  power: string | null
+  fuel: string | null
+  speed: string | null
+  transmission: string | null
+  seats: number | null
+  mileage: number | null
+  fuelCapacity: number | null
+  createdAt: Date
   _count: ProductCountAggregateOutputType | null
   _avg: ProductAvgAggregateOutputType | null
   _sum: ProductSumAggregateOutputType | null
@@ -241,24 +302,38 @@ export type ProductWhereInput = {
   OR?: Prisma.ProductWhereInput[]
   NOT?: Prisma.ProductWhereInput | Prisma.ProductWhereInput[]
   id?: Prisma.IntFilter<"Product"> | number
-  title?: Prisma.StringFilter<"Product"> | string
-  desc?: Prisma.StringFilter<"Product"> | string
-  prix?: Prisma.FloatFilter<"Product"> | number
-  emballage?: Prisma.StringFilter<"Product"> | string
-  farmId?: Prisma.IntNullableFilter<"Product"> | number | null
-  image?: Prisma.StringFilter<"Product"> | string
-  Date?: Prisma.DateTimeFilter<"Product"> | Date | string
+  name?: Prisma.StringFilter<"Product"> | string
+  category?: Prisma.StringNullableFilter<"Product"> | string | null
+  year?: Prisma.IntNullableFilter<"Product"> | number | null
+  price?: Prisma.FloatFilter<"Product"> | number
+  image?: Prisma.StringNullableFilter<"Product"> | string | null
+  description?: Prisma.StringNullableFilter<"Product"> | string | null
+  power?: Prisma.StringNullableFilter<"Product"> | string | null
+  fuel?: Prisma.StringNullableFilter<"Product"> | string | null
+  speed?: Prisma.StringNullableFilter<"Product"> | string | null
+  transmission?: Prisma.StringNullableFilter<"Product"> | string | null
+  seats?: Prisma.IntNullableFilter<"Product"> | number | null
+  mileage?: Prisma.FloatNullableFilter<"Product"> | number | null
+  fuelCapacity?: Prisma.FloatNullableFilter<"Product"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
 }
 
 export type ProductOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  desc?: Prisma.SortOrder
-  prix?: Prisma.SortOrder
-  emballage?: Prisma.SortOrder
-  farmId?: Prisma.SortOrderInput | Prisma.SortOrder
-  image?: Prisma.SortOrder
-  Date?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  category?: Prisma.SortOrderInput | Prisma.SortOrder
+  year?: Prisma.SortOrderInput | Prisma.SortOrder
+  price?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  power?: Prisma.SortOrderInput | Prisma.SortOrder
+  fuel?: Prisma.SortOrderInput | Prisma.SortOrder
+  speed?: Prisma.SortOrderInput | Prisma.SortOrder
+  transmission?: Prisma.SortOrderInput | Prisma.SortOrder
+  seats?: Prisma.SortOrderInput | Prisma.SortOrder
+  mileage?: Prisma.SortOrderInput | Prisma.SortOrder
+  fuelCapacity?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -266,24 +341,38 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ProductWhereInput | Prisma.ProductWhereInput[]
   OR?: Prisma.ProductWhereInput[]
   NOT?: Prisma.ProductWhereInput | Prisma.ProductWhereInput[]
-  title?: Prisma.StringFilter<"Product"> | string
-  desc?: Prisma.StringFilter<"Product"> | string
-  prix?: Prisma.FloatFilter<"Product"> | number
-  emballage?: Prisma.StringFilter<"Product"> | string
-  farmId?: Prisma.IntNullableFilter<"Product"> | number | null
-  image?: Prisma.StringFilter<"Product"> | string
-  Date?: Prisma.DateTimeFilter<"Product"> | Date | string
+  name?: Prisma.StringFilter<"Product"> | string
+  category?: Prisma.StringNullableFilter<"Product"> | string | null
+  year?: Prisma.IntNullableFilter<"Product"> | number | null
+  price?: Prisma.FloatFilter<"Product"> | number
+  image?: Prisma.StringNullableFilter<"Product"> | string | null
+  description?: Prisma.StringNullableFilter<"Product"> | string | null
+  power?: Prisma.StringNullableFilter<"Product"> | string | null
+  fuel?: Prisma.StringNullableFilter<"Product"> | string | null
+  speed?: Prisma.StringNullableFilter<"Product"> | string | null
+  transmission?: Prisma.StringNullableFilter<"Product"> | string | null
+  seats?: Prisma.IntNullableFilter<"Product"> | number | null
+  mileage?: Prisma.FloatNullableFilter<"Product"> | number | null
+  fuelCapacity?: Prisma.FloatNullableFilter<"Product"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
 }, "id">
 
 export type ProductOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  desc?: Prisma.SortOrder
-  prix?: Prisma.SortOrder
-  emballage?: Prisma.SortOrder
-  farmId?: Prisma.SortOrderInput | Prisma.SortOrder
-  image?: Prisma.SortOrder
-  Date?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  category?: Prisma.SortOrderInput | Prisma.SortOrder
+  year?: Prisma.SortOrderInput | Prisma.SortOrder
+  price?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  power?: Prisma.SortOrderInput | Prisma.SortOrder
+  fuel?: Prisma.SortOrderInput | Prisma.SortOrder
+  speed?: Prisma.SortOrderInput | Prisma.SortOrder
+  transmission?: Prisma.SortOrderInput | Prisma.SortOrder
+  seats?: Prisma.SortOrderInput | Prisma.SortOrder
+  mileage?: Prisma.SortOrderInput | Prisma.SortOrder
+  fuelCapacity?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   _count?: Prisma.ProductCountOrderByAggregateInput
   _avg?: Prisma.ProductAvgOrderByAggregateInput
   _max?: Prisma.ProductMaxOrderByAggregateInput
@@ -296,132 +385,227 @@ export type ProductScalarWhereWithAggregatesInput = {
   OR?: Prisma.ProductScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ProductScalarWhereWithAggregatesInput | Prisma.ProductScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Product"> | number
-  title?: Prisma.StringWithAggregatesFilter<"Product"> | string
-  desc?: Prisma.StringWithAggregatesFilter<"Product"> | string
-  prix?: Prisma.FloatWithAggregatesFilter<"Product"> | number
-  emballage?: Prisma.StringWithAggregatesFilter<"Product"> | string
-  farmId?: Prisma.IntNullableWithAggregatesFilter<"Product"> | number | null
-  image?: Prisma.StringWithAggregatesFilter<"Product"> | string
-  Date?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
+  name?: Prisma.StringWithAggregatesFilter<"Product"> | string
+  category?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  year?: Prisma.IntNullableWithAggregatesFilter<"Product"> | number | null
+  price?: Prisma.FloatWithAggregatesFilter<"Product"> | number
+  image?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  description?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  power?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  fuel?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  speed?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  transmission?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  seats?: Prisma.IntNullableWithAggregatesFilter<"Product"> | number | null
+  mileage?: Prisma.FloatNullableWithAggregatesFilter<"Product"> | number | null
+  fuelCapacity?: Prisma.FloatNullableWithAggregatesFilter<"Product"> | number | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
 }
 
 export type ProductCreateInput = {
-  title?: string
-  desc?: string
-  prix?: number
-  emballage?: string
-  farmId?: number | null
-  image?: string
-  Date?: Date | string
+  name: string
+  category?: string | null
+  year?: number | null
+  price?: number
+  image?: string | null
+  description?: string | null
+  power?: string | null
+  fuel?: string | null
+  speed?: string | null
+  transmission?: string | null
+  seats?: number | null
+  mileage?: number | null
+  fuelCapacity?: number | null
+  createdAt?: Date | string
 }
 
 export type ProductUncheckedCreateInput = {
   id?: number
-  title?: string
-  desc?: string
-  prix?: number
-  emballage?: string
-  farmId?: number | null
-  image?: string
-  Date?: Date | string
+  name: string
+  category?: string | null
+  year?: number | null
+  price?: number
+  image?: string | null
+  description?: string | null
+  power?: string | null
+  fuel?: string | null
+  speed?: string | null
+  transmission?: string | null
+  seats?: number | null
+  mileage?: number | null
+  fuelCapacity?: number | null
+  createdAt?: Date | string
 }
 
 export type ProductUpdateInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  desc?: Prisma.StringFieldUpdateOperationsInput | string
-  prix?: Prisma.FloatFieldUpdateOperationsInput | number
-  emballage?: Prisma.StringFieldUpdateOperationsInput | string
-  farmId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  image?: Prisma.StringFieldUpdateOperationsInput | string
-  Date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  power?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  speed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transmission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  mileage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fuelCapacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProductUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  desc?: Prisma.StringFieldUpdateOperationsInput | string
-  prix?: Prisma.FloatFieldUpdateOperationsInput | number
-  emballage?: Prisma.StringFieldUpdateOperationsInput | string
-  farmId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  image?: Prisma.StringFieldUpdateOperationsInput | string
-  Date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  power?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  speed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transmission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  mileage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fuelCapacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProductCreateManyInput = {
   id?: number
-  title?: string
-  desc?: string
-  prix?: number
-  emballage?: string
-  farmId?: number | null
-  image?: string
-  Date?: Date | string
+  name: string
+  category?: string | null
+  year?: number | null
+  price?: number
+  image?: string | null
+  description?: string | null
+  power?: string | null
+  fuel?: string | null
+  speed?: string | null
+  transmission?: string | null
+  seats?: number | null
+  mileage?: number | null
+  fuelCapacity?: number | null
+  createdAt?: Date | string
 }
 
 export type ProductUpdateManyMutationInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  desc?: Prisma.StringFieldUpdateOperationsInput | string
-  prix?: Prisma.FloatFieldUpdateOperationsInput | number
-  emballage?: Prisma.StringFieldUpdateOperationsInput | string
-  farmId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  image?: Prisma.StringFieldUpdateOperationsInput | string
-  Date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  power?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  speed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transmission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  mileage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fuelCapacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProductUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  desc?: Prisma.StringFieldUpdateOperationsInput | string
-  prix?: Prisma.FloatFieldUpdateOperationsInput | number
-  emballage?: Prisma.StringFieldUpdateOperationsInput | string
-  farmId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  image?: Prisma.StringFieldUpdateOperationsInput | string
-  Date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  power?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  speed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transmission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  seats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  mileage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fuelCapacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProductCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  desc?: Prisma.SortOrder
-  prix?: Prisma.SortOrder
-  emballage?: Prisma.SortOrder
-  farmId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  year?: Prisma.SortOrder
+  price?: Prisma.SortOrder
   image?: Prisma.SortOrder
-  Date?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  power?: Prisma.SortOrder
+  fuel?: Prisma.SortOrder
+  speed?: Prisma.SortOrder
+  transmission?: Prisma.SortOrder
+  seats?: Prisma.SortOrder
+  mileage?: Prisma.SortOrder
+  fuelCapacity?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type ProductAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  prix?: Prisma.SortOrder
-  farmId?: Prisma.SortOrder
+  year?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  seats?: Prisma.SortOrder
+  mileage?: Prisma.SortOrder
+  fuelCapacity?: Prisma.SortOrder
 }
 
 export type ProductMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  desc?: Prisma.SortOrder
-  prix?: Prisma.SortOrder
-  emballage?: Prisma.SortOrder
-  farmId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  year?: Prisma.SortOrder
+  price?: Prisma.SortOrder
   image?: Prisma.SortOrder
-  Date?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  power?: Prisma.SortOrder
+  fuel?: Prisma.SortOrder
+  speed?: Prisma.SortOrder
+  transmission?: Prisma.SortOrder
+  seats?: Prisma.SortOrder
+  mileage?: Prisma.SortOrder
+  fuelCapacity?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type ProductMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  desc?: Prisma.SortOrder
-  prix?: Prisma.SortOrder
-  emballage?: Prisma.SortOrder
-  farmId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  year?: Prisma.SortOrder
+  price?: Prisma.SortOrder
   image?: Prisma.SortOrder
-  Date?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  power?: Prisma.SortOrder
+  fuel?: Prisma.SortOrder
+  speed?: Prisma.SortOrder
+  transmission?: Prisma.SortOrder
+  seats?: Prisma.SortOrder
+  mileage?: Prisma.SortOrder
+  fuelCapacity?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type ProductSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  prix?: Prisma.SortOrder
-  farmId?: Prisma.SortOrder
+  year?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  seats?: Prisma.SortOrder
+  mileage?: Prisma.SortOrder
+  fuelCapacity?: Prisma.SortOrder
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type FloatFieldUpdateOperationsInput = {
@@ -432,7 +616,7 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
+export type NullableFloatFieldUpdateOperationsInput = {
   set?: number | null
   increment?: number
   decrement?: number
@@ -444,62 +628,97 @@ export type NullableIntFieldUpdateOperationsInput = {
 
 export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  title?: boolean
-  desc?: boolean
-  prix?: boolean
-  emballage?: boolean
-  farmId?: boolean
+  name?: boolean
+  category?: boolean
+  year?: boolean
+  price?: boolean
   image?: boolean
-  Date?: boolean
+  description?: boolean
+  power?: boolean
+  fuel?: boolean
+  speed?: boolean
+  transmission?: boolean
+  seats?: boolean
+  mileage?: boolean
+  fuelCapacity?: boolean
+  createdAt?: boolean
 }, ExtArgs["result"]["product"]>
 
 export type ProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  title?: boolean
-  desc?: boolean
-  prix?: boolean
-  emballage?: boolean
-  farmId?: boolean
+  name?: boolean
+  category?: boolean
+  year?: boolean
+  price?: boolean
   image?: boolean
-  Date?: boolean
+  description?: boolean
+  power?: boolean
+  fuel?: boolean
+  speed?: boolean
+  transmission?: boolean
+  seats?: boolean
+  mileage?: boolean
+  fuelCapacity?: boolean
+  createdAt?: boolean
 }, ExtArgs["result"]["product"]>
 
 export type ProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  title?: boolean
-  desc?: boolean
-  prix?: boolean
-  emballage?: boolean
-  farmId?: boolean
+  name?: boolean
+  category?: boolean
+  year?: boolean
+  price?: boolean
   image?: boolean
-  Date?: boolean
+  description?: boolean
+  power?: boolean
+  fuel?: boolean
+  speed?: boolean
+  transmission?: boolean
+  seats?: boolean
+  mileage?: boolean
+  fuelCapacity?: boolean
+  createdAt?: boolean
 }, ExtArgs["result"]["product"]>
 
 export type ProductSelectScalar = {
   id?: boolean
-  title?: boolean
-  desc?: boolean
-  prix?: boolean
-  emballage?: boolean
-  farmId?: boolean
+  name?: boolean
+  category?: boolean
+  year?: boolean
+  price?: boolean
   image?: boolean
-  Date?: boolean
+  description?: boolean
+  power?: boolean
+  fuel?: boolean
+  speed?: boolean
+  transmission?: boolean
+  seats?: boolean
+  mileage?: boolean
+  fuelCapacity?: boolean
+  createdAt?: boolean
 }
 
-export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "desc" | "prix" | "emballage" | "farmId" | "image" | "Date", ExtArgs["result"]["product"]>
+export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "category" | "year" | "price" | "image" | "description" | "power" | "fuel" | "speed" | "transmission" | "seats" | "mileage" | "fuelCapacity" | "createdAt", ExtArgs["result"]["product"]>
 
 export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Product"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    title: string
-    desc: string
-    prix: number
-    emballage: string
-    farmId: number | null
-    image: string
-    Date: Date
+    name: string
+    category: string | null
+    year: number | null
+    price: number
+    image: string | null
+    description: string | null
+    power: string | null
+    fuel: string | null
+    speed: string | null
+    transmission: string | null
+    seats: number | null
+    mileage: number | null
+    fuelCapacity: number | null
+    createdAt: Date
   }, ExtArgs["result"]["product"]>
   composites: {}
 }
@@ -924,13 +1143,20 @@ export interface Prisma__ProductClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface ProductFieldRefs {
   readonly id: Prisma.FieldRef<"Product", 'Int'>
-  readonly title: Prisma.FieldRef<"Product", 'String'>
-  readonly desc: Prisma.FieldRef<"Product", 'String'>
-  readonly prix: Prisma.FieldRef<"Product", 'Float'>
-  readonly emballage: Prisma.FieldRef<"Product", 'String'>
-  readonly farmId: Prisma.FieldRef<"Product", 'Int'>
+  readonly name: Prisma.FieldRef<"Product", 'String'>
+  readonly category: Prisma.FieldRef<"Product", 'String'>
+  readonly year: Prisma.FieldRef<"Product", 'Int'>
+  readonly price: Prisma.FieldRef<"Product", 'Float'>
   readonly image: Prisma.FieldRef<"Product", 'String'>
-  readonly Date: Prisma.FieldRef<"Product", 'DateTime'>
+  readonly description: Prisma.FieldRef<"Product", 'String'>
+  readonly power: Prisma.FieldRef<"Product", 'String'>
+  readonly fuel: Prisma.FieldRef<"Product", 'String'>
+  readonly speed: Prisma.FieldRef<"Product", 'String'>
+  readonly transmission: Prisma.FieldRef<"Product", 'String'>
+  readonly seats: Prisma.FieldRef<"Product", 'Int'>
+  readonly mileage: Prisma.FieldRef<"Product", 'Float'>
+  readonly fuelCapacity: Prisma.FieldRef<"Product", 'Float'>
+  readonly createdAt: Prisma.FieldRef<"Product", 'DateTime'>
 }
     
 
@@ -1125,7 +1351,7 @@ export type ProductCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   /**
    * The data needed to create a Product.
    */
-  data?: Prisma.XOR<Prisma.ProductCreateInput, Prisma.ProductUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.ProductCreateInput, Prisma.ProductUncheckedCreateInput>
 }
 
 /**

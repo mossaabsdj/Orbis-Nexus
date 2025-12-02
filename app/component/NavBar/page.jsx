@@ -41,7 +41,12 @@ const TEXTS = {
   ],
 };
 
-export default function AppNavbar({ select, selected_from_DescoverPage }) {
+export default function AppNavbar({
+  SC,
+  SS,
+  select,
+  selected_from_DescoverPage,
+}) {
   const [open, setOpen] = React.useState(false);
   const [SelectedItem, setSelectedItem] = React.useState("Accueil");
   const [isLoading, setIsLoading] = React.useState(false);
@@ -101,28 +106,34 @@ export default function AppNavbar({ select, selected_from_DescoverPage }) {
               {TEXTS.navItems.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <NavigationMenuItem key={item.label}>
-                    <motion.button
-                      onClick={() => {
-                        select(item.label);
-                        setSelectedItem(item.label);
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      animate={
-                        SelectedItem === item.label
-                          ? { scale: 1.08 }
-                          : { scale: 1 }
+                  <motion.button
+                    key={item.label}
+                    onClick={() => {
+                      setSelectedItem(item.label);
+                      setOpen(false);
+
+                      // Call the scroll functions
+                      if (item.label === "Services") {
+                        SS?.();
+                      } else if (item.label === "Intermédiation automobile") {
+                        SC?.();
                       }
-                      className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
-                        SelectedItem === item.label
-                          ? "bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white shadow-md"
-                          : "text-gray-300 hover:text-white hover:bg-neutral-800/50"
-                      }`}
-                    >
-                      <Icon className="w-4 h-4" />
-                      {item.label}
-                    </motion.button>
-                  </NavigationMenuItem>
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={
+                      SelectedItem === item.label
+                        ? { scale: 1.08 }
+                        : { scale: 1 }
+                    }
+                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                      SelectedItem === item.label
+                        ? "bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white shadow-md"
+                        : "text-gray-300 hover:text-white hover:bg-neutral-800/50"
+                    }`}
+                  >
+                    <Icon className="w-4 h-4" />
+                    {item.label}
+                  </motion.button>
                 );
               })}
 
@@ -200,9 +211,17 @@ export default function AppNavbar({ select, selected_from_DescoverPage }) {
                       <motion.button
                         key={item.label}
                         onClick={() => {
-                          select(item.label);
                           setSelectedItem(item.label);
                           setOpen(false);
+
+                          // Scroll to sections
+                          if (item.label === "Services") {
+                            SS?.();
+                          } else if (
+                            item.label === "Intermédiation automobile"
+                          ) {
+                            SC?.();
+                          }
                         }}
                         whileTap={{ scale: 0.97 }}
                         animate={

@@ -20,499 +20,127 @@
       "height": 600
     }
   },
-  "Farms": {
-    "TraditionalCheese": {
-      "hero": {
-        "title": "Traditional Cheese",
-        "description": "A traditional cheese production farm (fromage artisanal) that uses high-quality local products, herbs, and oils. The project is based on producing fresh milk from a herd of high-quality dairy cows, which is then transformed into various types of cheese using traditional or semi-industrial methods, such as fresh or aged cheeses. The cheese is made using milking equipment, a pasteurization and curdling unit, and temperature- and humidity-controlled aging rooms. The project focuses on quality, hygiene, and the local character of the product, giving it added value in high-end markets. The cheese is marketed directly at the farm, as well as through shops, hotels, and specialty markets. Regarding sanitary conditions, all health regulations must be respected. This farm specializes in producing natural and artisanal local products using local herbs and oils.",
-        "button": "Discover Our Products",
-        "image": {
-          "src": "/images/HeroCheese.jpg",
-          "alt": "traditional cheese",
-          "width": 340,
-          "height": 220
-        }
-      },
-      "products": [
-        {
-          "title": "Goat Cheese",
-          "description": "Soft, tangy, and perfect for salads or as a spread.",
-          "prix": "€8.50",
-          "image": {
-            "src": "/images/Cheese_1.png",
-            "alt": "Goat Cheese",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Aged Tomme",
-          "description": "Firm and nutty, aged for a deep, complex flavor.",
-          "prix": "€12.00",
-          "image": {
-            "src": "/images/cheese_2.jpg",
-            "alt": "Aged Tomme",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Fresh Ricotta",
-          "description": "Creamy and delicate, ideal for desserts and pastries.",
-          "prix": "€7.00",
-          "image": {
-            "src": "/images/fraise.jpg",
-            "alt": "Fresh Ricotta",
-            "width": 350,
-            "height": 220
-          }
-        }
-      ],
-      "catering": {
-        "title": "Catering Services",
-        "description": "Our catering service brings the authentic taste of the farm directly to your table. We create fresh, healthy dishes using our own farm-made cheeses, organic herbs, and local oils. Each recipe is inspired by traditional techniques and crafted to highlight natural flavors and seasonal ingredients. Whether you're hosting a rustic event, a countryside retreat, or a gourmet experience, our farm-to-table catering adds a distinctive, artisanal touch that reflects the values of sustainability, quality, and local tradition.",
-        "button": "Contact Catering",
-        "image": {
-          "src": "/images/cateringChesee.png",
-          "alt": "Catering",
-          "width": 500,
-          "height": 350
-        }
-      },
-      "bungalow": {
-        "title": "Stay in Our Bungalows",
-        "description": "A bungalow is a type of simple dwelling, often built from wood, consisting of a single floor with an outdoor porch. It is characterized by its practical and comfortable design and is typically used as temporary accommodation in tourist areas such as beaches or mountains. Bungalows offer a peaceful and natural environment for relaxation, making them a popular choice in campsites and summer resorts.",
-        "button": "Book a Bungalow",
-        "image": {
-          "src": "/images/bungalow.png",
-          "alt": "Bungalow",
-          "width": 500,
-          "height": 350
-        }
-      }
-    },
-    "AnimalHusbandry": {
-      "hero": {
-        "title": "Animal Husbandry",
-        "description": "An animal husbandry farm for meat production raises livestock like cattle, sheep, goats, chickens, and turkeys using scientific methods focused on nutrition, veterinary care, and welfare, offering fresh red and white meat served in a modern on-site restaurant with beautifully designed wooden facilities.",
-        "button": "Discover Our Products",
-        "image": {
-          "src": "/images/AnimalsHero.png",
-          "alt": "animal husbandry",
-          "width": 340,
-          "height": 220
-        }
-      },
-      "products": [
-        {
-          "title": "Fresh Milk",
-          "description": "Pure, fresh milk from grass-fed cows and goats.",
-          "prix": "€2.00/L",
-          "image": {
-            "src": "/images/fresh-milk.jpg",
-            "alt": "Fresh Milk",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Organic Eggs",
-          "description": "Farm-fresh organic eggs, rich in nutrients.",
-          "prix": "€3.50/dozen",
-          "image": {
-            "src": "/images/organic-eggs.jpg",
-            "alt": "Organic Eggs",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Free-range Chicken",
-          "description": "Tender and flavorful free-range chicken.",
-          "prix": "€10.00/kg",
-          "image": {
-            "src": "/images/free-range-chicken.jpg",
-            "alt": "Free-range Chicken",
-            "width": 350,
-            "height": 220
-          }
-        }
-      ],
-      "catering": {
-        "title": "Catering Services",
-        "description": "It is a sector dedicated to preparing and serving food, and it gains a distinctive character when it relies on organic and natural products. In the context of a traditional cheese production farm, la restauration involves offering dishes made with high-quality fresh milk cheeses, enhanced with natural local herbs and oils. These organic products are used to prepare healthy recipes with a local flair, giving restaurants and hotels an authentic touch and increasing the appeal of the dishes served. This makes la restauration a key partner in promoting artisanal agriculture and natural products.",
-        "button": "Contact Catering",
-        "image": {
-          "src": "/images/animalcatering.jpg",
-          "alt": "Catering",
-          "width": 500,
-          "height": 350
-        }
-      },
-      "bungalow": {
-        "title": "Stay in Our Bungalows",
-        "description": "A bungalow is a type of simple dwelling, often built from wood, consisting of a single floor with an outdoor porch. It is characterized by its practical and comfortable design and is typically used as temporary accommodation in tourist areas such as beaches or mountains. Bungalows offer a peaceful and natural environment for relaxation, making them a popular choice in campsites and summer resorts.",
-        "button": "Book a Bungalow",
-        "image": {
-          "src": "/images/bungalow.png",
-          "alt": "Bungalow",
-          "width": 500,
-          "height": 350
-        }
-      }
-    },
-    "aquaculturefarm": {
-      "hero": {
-        "title": "aquaculture farm",
-        "description": "An aquaculture farm is a specialized facility for raising edible aquatic species like tilapia, salmon, and shrimp or ornamental fish like koi in controlled environments such as ponds, tanks, or cages, using precise techniques for water purification, feeding, and health monitoring to ensure quality, safety, and sustainability.",
-        "button": "Discover Our Products",
-        "image": {
-          "src": "/images/aquacultureHero.png",
-          "alt": "aquaculture farm",
-          "width": 340,
-          "height": 220
-        }
-      },
-      "products": [
-        {
-          "title": "Fresh Milk",
-          "description": "Pure, fresh milk from grass-fed cows and goats.",
-          "prix": "€2.00/L",
-          "image": {
-            "src": "/images/fresh-milk.jpg",
-            "alt": "Fresh Milk",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Organic Eggs",
-          "description": "Farm-fresh organic eggs, rich in nutrients.",
-          "prix": "€3.50/dozen",
-          "image": {
-            "src": "/images/organic-eggs.jpg",
-            "alt": "Organic Eggs",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Free-range Chicken",
-          "description": "Tender and flavorful free-range chicken.",
-          "prix": "€10.00/kg",
-          "image": {
-            "src": "/images/free-range-chicken.jpg",
-            "alt": "Free-range Chicken",
-            "width": 350,
-            "height": 220
-          }
-        }
-      ],
-      "catering": {
-        "title": "Catering Services",
-        "description": "It is a sector dedicated to preparing and serving food, and it gains a distinctive character when it relies on organic and natural products. In the context of a traditional cheese production farm, la restauration involves offering dishes made with high-quality fresh milk cheeses, enhanced with natural local herbs and oils. These organic products are used to prepare healthy recipes with a local flair, giving restaurants and hotels an authentic touch and increasing the appeal of the dishes served. This makes la restauration a key partner in promoting artisanal agriculture and natural products.",
-        "button": "Contact Catering",
-        "image": {
-          "src": "/images/fishcatering.jpg",
-          "alt": "Catering",
-          "width": 500,
-          "height": 350
-        }
-      },
-      "bungalow": {
-        "title": "Stay in Our Bungalows",
-        "description": "A bungalow is a type of simple dwelling, often built from wood, consisting of a single floor with an outdoor porch. It is characterized by its practical and comfortable design and is typically used as temporary accommodation in tourist areas such as beaches or mountains. Bungalows offer a peaceful and natural environment for relaxation, making them a popular choice in campsites and summer resorts.",
-        "button": "Book a Bungalow",
-        "image": {
-          "src": "/images/bungalow.png",
-          "alt": "Bungalow",
-          "width": 500,
-          "height": 350
-        }
-      }
-    },
-    "redfruitfarm": {
-      "hero": {
-        "title": "red fruit farm",
-        "description": "A red fruit farm specializes in cultivating strawberries, raspberries, blackberries, cherries, and prunes in climate-controlled greenhouses using modern techniques like drip irrigation and biological pest monitoring to produce high-quality, chemical-free organic fruits, along with natural derivatives like traditional organic jam, contributing to food security and the local economy.",
-        "button": "Discover Our Products",
-        "image": {
-          "src": "/images/redfruitHero.jpg",
-          "alt": "red fruit farm",
-          "width": 340,
-          "height": 220
-        }
-      },
-      "products": [
-        {
-          "title": "Fresh Milk",
-          "description": "Pure, fresh milk from grass-fed cows and goats.",
-          "prix": "€2.00/L",
-          "image": {
-            "src": "/images/fresh-milk.jpg",
-            "alt": "Fresh Milk",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Organic Eggs",
-          "description": "Farm-fresh organic eggs, rich in nutrients.",
-          "prix": "€3.50/dozen",
-          "image": {
-            "src": "/images/organic-eggs.jpg",
-            "alt": "Organic Eggs",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Free-range Chicken",
-          "description": "Tender and flavorful free-range chicken.",
-          "prix": "€10.00/kg",
-          "image": {
-            "src": "/images/free-range-chicken.jpg",
-            "alt": "Free-range Chicken",
-            "width": 350,
-            "height": 220
-          }
-        }
-      ],
-      "catering": {
-        "title": "Catering Services",
-        "description": "It is a sector dedicated to preparing and serving food, and it gains a distinctive character when it relies on organic and natural products. In the context of a traditional cheese production farm, la restauration involves offering dishes made with high-quality fresh milk cheeses, enhanced with natural local herbs and oils. These organic products are used to prepare healthy recipes with a local flair, giving restaurants and hotels an authentic touch and increasing the appeal of the dishes served. This makes la restauration a key partner in promoting artisanal agriculture and natural products.",
-        "button": "Contact Catering",
-        "image": {
-          "src": "/images/redfruitcatering.jpg",
-          "alt": "Catering",
-          "width": 500,
-          "height": 350
-        }
-      },
-      "bungalow": {
-        "title": "Stay in Our Bungalows",
-        "description": "A bungalow is a type of simple dwelling, often built from wood, consisting of a single floor with an outdoor porch. It is characterized by its practical and comfortable design and is typically used as temporary accommodation in tourist areas such as beaches or mountains. Bungalows offer a peaceful and natural environment for relaxation, making them a popular choice in campsites and summer resorts.",
-        "button": "Book a Bungalow",
-        "image": {
-          "src": "/images/bungalow.png",
-          "alt": "Bungalow",
-          "width": 500,
-          "height": 350
-        }
-      }
-    },
-    "honeyproducingfarm": {
-      "hero": {
-        "title": "honey-producing farm",
-        "description": "A honey farm is an agricultural unit specialized in beekeeping, raising bees in managed hives to produce natural honey and by-products like beeswax, pollen, and propolis, using scientific methods to ensure quality and sustainability, while supporting pollination, crop yields, and rural development.",
-        "button": "Discover Our Products",
-        "image": {
-          "src": "/images/honeyproducingfarm.jpg",
-          "alt": "honey farm",
-          "width": 340,
-          "height": 220
-        }
-      },
-      "products": [
-        {
-          "title": "Fresh Milk",
-          "description": "Pure, fresh milk from grass-fed cows and goats.",
-          "prix": "€2.00/L",
-          "image": {
-            "src": "/images/fresh-milk.jpg",
-            "alt": "Fresh Milk",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Organic Eggs",
-          "description": "Farm-fresh organic eggs, rich in nutrients.",
-          "prix": "€3.50/dozen",
-          "image": {
-            "src": "/images/organic-eggs.jpg",
-            "alt": "Organic Eggs",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Free-range Chicken",
-          "description": "Tender and flavorful free-range chicken.",
-          "prix": "€10.00/kg",
-          "image": {
-            "src": "/images/free-range-chicken.jpg",
-            "alt": "Free-range Chicken",
-            "width": 350,
-            "height": 220
-          }
-        }
-      ],
-      "catering": {
-        "title": "Catering Services",
-        "description": "It is a sector dedicated to preparing and serving food, and it gains a distinctive character when it relies on organic and natural products. In the context of a traditional cheese production farm, la restauration involves offering dishes made with high-quality fresh milk cheeses, enhanced with natural local herbs and oils. These organic products are used to prepare healthy recipes with a local flair, giving restaurants and hotels an authentic touch and increasing the appeal of the dishes served. This makes la restauration a key partner in promoting artisanal agriculture and natural products.",
-        "button": "Contact Catering",
-        "image": {
-          "src": "/images/honeycatering.jpg",
-          "alt": "Catering",
-          "width": 500,
-          "height": 350
-        }
-      },
-      "bungalow": {
-        "title": "Stay in Our Bungalows",
-        "description": "A bungalow is a type of simple dwelling, often built from wood, consisting of a single floor with an outdoor porch. It is characterized by its practical and comfortable design and is typically used as temporary accommodation in tourist areas such as beaches or mountains. Bungalows offer a peaceful and natural environment for relaxation, making them a popular choice in campsites and summer resorts.",
-        "button": "Book a Bungalow",
-        "image": {
-          "src": "/images/bungalow.png",
-          "alt": "Bungalow",
-          "width": 500,
-          "height": 350
-        }
-      }
-    },
 
-    "ediblemushroomfarm": {
-      "hero": {
-        "title": "edible mushroom farm",
-        "description": "An edible mushroom farm is an agricultural production unit specialized in cultivating fungi for human consumption—such as button (Agaricus bisporus), oyster (Pleurotus spp), and reishi mushrooms—in controlled environments with regulated humidity, temperature, and ventilation, using organic substrates like straw or sterilized sawdust to produce high-quality mushrooms for fresh use, drying, or commercial sale.",
-        "button": "Discover Our Products",
-        "image": {
-          "src": "/images/Heromushroom.png",
-          "alt": "edible mushroom farm",
-          "width": 340,
-          "height": 220
-        }
-      },
-      "products": [
-        {
-          "title": "Goat Cheese",
-          "description": "Soft, tangy, and perfect for salads or as a spread.",
-          "prix": "€8.50",
-          "image": {
-            "src": "/images/Cheese_1.png",
-            "alt": "Goat Cheese",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Aged Tomme",
-          "description": "Firm and nutty, aged for a deep, complex flavor.",
-          "prix": "€12.00",
-          "image": {
-            "src": "/images/cheese_2.jpg",
-            "alt": "Aged Tomme",
-            "width": 350,
-            "height": 220
-          }
-        },
-        {
-          "title": "Fresh Ricotta",
-          "description": "Creamy and delicate, ideal for desserts and pastries.",
-          "prix": "€7.00",
-          "image": {
-            "src": "/images/fraise.jpg",
-            "alt": "Fresh Ricotta",
-            "width": 350,
-            "height": 220
-          }
-        }
-      ],
-      "catering": {
-        "title": "Catering Services",
-        "description": "It is a sector dedicated to preparing and serving food, and it gains a distinctive character when it relies on organic and natural products. In the context of a traditional cheese production farm, la restauration involves offering dishes made with high-quality fresh milk cheeses, enhanced with natural local herbs and oils. These organic products are used to prepare healthy recipes with a local flair, giving restaurants and hotels an authentic touch and increasing the appeal of the dishes served. This makes la restauration a key partner in promoting artisanal agriculture and natural products.",
-        "button": "Contact Catering",
-        "image": {
-          "src": "/images/mushromcatering.png",
-          "alt": "Catering",
-          "width": 500,
-          "height": 350
-        }
-      },
-      "bungalow": {
-        "title": "Stay in Our Bungalows",
-        "description": "A bungalow is a type of simple dwelling, often built from wood, consisting of a single floor with an outdoor porch. It is characterized by its practical and comfortable design and is typically used as temporary accommodation in tourist areas such as beaches or mountains. Bungalows offer a peaceful and natural environment for relaxation, making them a popular choice in campsites and summer resorts.",
-        "button": "Book a Bungalow",
-        "image": {
-          "src": "/images/bungalow.png",
-          "alt": "Bungalow",
-          "width": 500,
-          "height": 350
-        }
-      }
-    }
-  },
   "Product": {
-    "title": "Products",
+    "title": "Produits",
     "table": {
       "columns": [
-        { "accessor": "title", "label": "Name", "sortable": true },
-        { "accessor": "desc", "label": "desc", "sortable": false },
-        { "accessor": "prix", "label": "Prix", "sortable": true },
-        { "accessor": "emballage", "label": "embalage", "sortable": false },
-        { "accessor": "farm", "label": "Farm", "sortable": true },
-
-        { "accessor": "Date", "label": "createdAt", "sortable": true },
-        { "accessor": "image", "label": "image", "sortable": false }
+        { "accessor": "name", "label": "Nom", "sortable": true },
+        { "accessor": "category", "label": "Marque", "sortable": true },
+        { "accessor": "year", "label": "Année", "sortable": true },
+        { "accessor": "price", "label": "Prix", "sortable": true },
+        { "accessor": "power", "label": "Puissance", "sortable": false },
+        { "accessor": "fuel", "label": "Carburant", "sortable": false },
+        { "accessor": "speed", "label": "Vitesse", "sortable": false },
+        {
+          "accessor": "transmission",
+          "label": "Transmission",
+          "sortable": false
+        },
+        { "accessor": "seats", "label": "Places", "sortable": true },
+        { "accessor": "mileage", "label": "Kilométrage", "sortable": true },
+        {
+          "accessor": "fuelCapacity",
+          "label": "Capacité du réservoir",
+          "sortable": true
+        },
+        {
+          "accessor": "description",
+          "label": "Description",
+          "sortable": false
+        },
+        { "accessor": "image", "label": "Image", "sortable": false },
+        { "accessor": "createdAt", "label": "Créé le", "sortable": true }
       ],
-
-      "SearchPlaceHolder": "Search Product..."
+      "SearchPlaceHolder": "Rechercher un produit..."
     },
     "AddClient": {
       "FirstFields": [
         {
-          "accessor": "title",
-          "label": "Name",
+          "accessor": "name",
+          "label": "Nom",
           "type": "text",
           "required": true
         },
         {
-          "accessor": "desc",
-          "label": "desc",
+          "accessor": "category",
+          "label": "Marque",
           "type": "text",
-          "required": true
+          "required": false
         },
         {
-          "accessor": "prix",
+          "accessor": "year",
+          "label": "Année",
+          "type": "number",
+          "required": false
+        },
+        {
+          "accessor": "price",
           "label": "Prix",
           "type": "number",
           "required": true
         },
         {
-          "accessor": "emballage",
-          "label": "embalage",
+          "accessor": "power",
+          "label": "Puissance",
           "type": "text",
-          "required": true
+          "required": false
         },
         {
-          "accessor": "farm",
-          "label": "Farm",
-          "type": "select",
-          "required": true,
-          "options": ["agro", "ana", "cult"]
+          "accessor": "fuel",
+          "label": "Carburant",
+          "type": "text",
+          "required": false
+        },
+        {
+          "accessor": "speed",
+          "label": "Vitesse",
+          "type": "text",
+          "required": false
+        },
+        {
+          "accessor": "transmission",
+          "label": "Transmission",
+          "type": "text",
+          "required": false
+        },
+        {
+          "accessor": "seats",
+          "label": "Places",
+          "type": "number",
+          "required": false
+        },
+        {
+          "accessor": "mileage",
+          "label": "Kilométrage",
+          "type": "number",
+          "required": false
+        },
+        {
+          "accessor": "fuelCapacity",
+          "label": "Capacité du réservoir",
+          "type": "number",
+          "required": false
+        },
+        {
+          "accessor": "description",
+          "label": "Description",
+          "type": "textarea",
+          "required": false
         },
         {
           "accessor": "image",
-          "label": "image",
+          "label": "Image",
           "type": "image",
           "required": true
         }
       ],
-      "AddButton": "Add Product",
-      "Title": "Add Product"
+      "AddButton": "Ajouter le produit",
+      "Title": "Ajouter un produit"
     },
     "ViewModel": {
-      "title": "View Product",
+      "title": "Voir le produit",
       "DontDisplayField": "farmId"
-    },
-    "StatsModel": {
-      "title": "Stats",
-      "totalClientsTitle": "Total Clients",
-
-      "plan": {
-        "title": "Nouveaux Clients par Mois"
-      }
     }
   },
 

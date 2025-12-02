@@ -83,13 +83,20 @@ export type CompteScalarFieldEnum = (typeof CompteScalarFieldEnum)[keyof typeof 
 
 export const ProductScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  desc: 'desc',
-  prix: 'prix',
-  emballage: 'emballage',
-  farmId: 'farmId',
+  name: 'name',
+  category: 'category',
+  year: 'year',
+  price: 'price',
   image: 'image',
-  Date: 'Date'
+  description: 'description',
+  power: 'power',
+  fuel: 'fuel',
+  speed: 'speed',
+  transmission: 'transmission',
+  seats: 'seats',
+  mileage: 'mileage',
+  fuelCapacity: 'fuelCapacity',
+  createdAt: 'createdAt'
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]

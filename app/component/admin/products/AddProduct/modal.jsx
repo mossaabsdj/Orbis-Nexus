@@ -14,28 +14,9 @@ const AddModal = ({ open, onClose, data = {} }) => {
   const Title = data?.AddClient?.Title ?? "";
   const labels = object.Labels;
   const [errorMessage, setErrorMessage] = useState("");
-  const [Farms, setFarms] = useState([{}]);
-  const [Emballages, setEmballages] = useState([]);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
-  const [showNewEmballage, setShowNewEmballage] = useState(false);
-  const [newEmballageName, setNewEmballageName] = useState("");
-  const [selectedEmballages, setSelectedEmballages] = useState([]);
-  const [newEmballageNames, setNewEmballageNames] = useState([""]);
 
-  const getSelectedFarms = async () => {
-    const response = await fetchData({
-      method: "GET",
-      url: "/api/Farms",
-    });
-    //  const data = await response.json(); // ✅ needed
-    console.log("data" + JSON.stringify(response));
-    setFarms(response);
-  };
-
-  useEffect(() => {
-    getSelectedFarms();
-  }, []);
   const uploadImageToCloudinary = async (file) => {
     return new Promise((resolve, reject) => {
       const url = "https://api.cloudinary.com/v1_1/dgozr0fbn/image/upload";
@@ -74,45 +55,16 @@ const AddModal = ({ open, onClose, data = {} }) => {
   };
 
   // Handle multi-select for emballages
-  const handleEmballagesChange = (e) => {
-    const options = Array.from(e.target.selectedOptions, (opt) => opt.value);
-    setSelectedEmballages(options.filter((v) => v !== "add_new"));
-    setShowNewEmballage(options.includes("add_new"));
-  };
 
   // Add new emballage input field
-  const addNewEmballageField = () => {
-    setNewEmballageNames([...newEmballageNames, ""]);
-  };
 
   // Remove a new emballage input field
-  const removeNewEmballageField = (idx) => {
-    setNewEmballageNames(newEmballageNames.filter((_, i) => i !== idx));
-  };
 
   // Update a new emballage name
-  const updateNewEmballageName = (idx, value) => {
-    const updated = [...newEmballageNames];
-    updated[idx] = value;
-    setNewEmballageNames(updated);
-  };
-
   const onSubmit = async (formValues) => {
     setErrorMessage("");
     try {
       const updatedValues = { ...formValues };
-
-      // Only use newEmballageNames for new products
-      const emballagesToSend = newEmballageNames.filter((n) => n.trim() !== "");
-
-      // Remove old emballage field
-      delete updatedValues.emballage;
-
-      // Map farm to farmId for API
-      if (updatedValues.farm) {
-        updatedValues.farmId = parseInt(updatedValues.farm);
-        delete updatedValues.farm;
-      }
 
       // Handle image upload
       if (updatedValues.image instanceof File) {
@@ -121,7 +73,6 @@ const AddModal = ({ open, onClose, data = {} }) => {
       }
       setloading(true);
       // Send emballages as array of names
-      updatedValues.emballages = emballagesToSend;
 
       // Debug: log what will be sent
       console.log("Submitting product:", updatedValues);
@@ -199,81 +150,6 @@ const AddModal = ({ open, onClose, data = {} }) => {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {FirstFields.map((field) => {
-                if (field.type === "select") {
-                  return (
-                    <div key={field.accessor}>
-                      <label
-                        htmlFor={field.accessor}
-                        className="block text-gray-700 font-medium mb-1"
-                      >
-                        {field.label}
-                      </label>
-                      <select
-                        id={field.accessor}
-                        name={field.accessor}
-                        value={values[field.accessor] || ""} // ✅ current selected value
-                        onChange={handleChange}
-                        required={field.required}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
-                      >
-                        <option value="" disabled>
-                          Please choose
-                        </option>
-                        {Farms.map((opt) => (
-                          <option key={opt.id} value={opt.id}>
-                            {opt.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  );
-                }
-
-                if (field.accessor === "emballage") {
-                  return (
-                    <div key={field.accessor}>
-                      <label
-                        htmlFor={field.accessor}
-                        className="block text-gray-700 font-medium mb-1"
-                      >
-                        {field.label}
-                      </label>
-                      <div className="mt-2 space-y-2">
-                        {newEmballageNames.map((name, idx) => (
-                          <div key={idx} className="flex gap-2">
-                            <input
-                              type="text"
-                              placeholder="New emballage name"
-                              value={name}
-                              onChange={(e) =>
-                                updateNewEmballageName(idx, e.target.value)
-                              }
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
-                            />
-                            {newEmballageNames.length > 1 && (
-                              <button
-                                type="button"
-                                onClick={() => removeNewEmballageField(idx)}
-                                className="text-red-500"
-                                title="Remove"
-                              >
-                                &times;
-                              </button>
-                            )}
-                          </div>
-                        ))}
-                        <button
-                          type="button"
-                          onClick={addNewEmballageField}
-                          className="mt-1 text-black underline"
-                        >
-                          + Add another emballage
-                        </button>
-                      </div>
-                    </div>
-                  );
-                }
-
                 if (field.type === "image" || field.accessor === "image") {
                   return (
                     <div key={field.accessor}>

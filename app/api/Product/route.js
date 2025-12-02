@@ -27,11 +27,19 @@ export async function POST(req) {
 
     const product = await prisma.product.create({
       data: {
-        title: body.title,
-        desc: body.desc,
-        prix: parseFloat(body.prix),
-        emballage: body.emballage,
-        image: body.image,
+        name: body.name,
+        category: body.category || null, // Brand / Marque
+        year: body.year ? parseInt(body.year) : null,
+        price: body.price ? parseFloat(body.price) : 0,
+        power: body.power || null,
+        fuel: body.fuel || null,
+        speed: body.speed || null,
+        transmission: body.transmission || null,
+        seats: body.seats ? parseInt(body.seats) : null,
+        mileage: body.mileage ? parseFloat(body.mileage) : null,
+        fuelCapacity: body.fuelCapacity ? parseFloat(body.fuelCapacity) : null,
+        description: body.description || null,
+        image: body.image || null,
       },
     });
 
@@ -43,4 +51,46 @@ export async function POST(req) {
       headers: { "Content-Type": "application/json" },
     });
   }
+}
+export async function DELETE(req) {
+  const body = await req.json();
+  const id = Number(body.id);
+
+  console.log("Deleting product with ID:", id);
+
+  await prisma.product.delete({
+    where: { id },
+  });
+
+  return Response.json({ success: true });
+}
+export async function PUT(req) {
+  const body = await req.json();
+  const id = Number(body.id);
+
+  if (!id) {
+    return Response.json({ error: "Missing ID" }, { status: 400 });
+  }
+
+  const updatedProduct = await prisma.product.update({
+    where: { id },
+    data: {
+      name: body.name,
+      category: body.category || null, // Brand / Marque
+      year: body.year ? parseInt(body.year) : null,
+      price: body.price ? parseFloat(body.price) : 0,
+      power: body.power || null,
+      fuel: body.fuel || null,
+      speed: body.speed || null,
+      transmission: body.transmission || null,
+      seats: body.seats ? parseInt(body.seats) : null,
+      mileage: body.mileage ? parseFloat(body.mileage) : null,
+      fuelCapacity: body.fuelCapacity ? parseFloat(body.fuelCapacity) : null,
+      description: body.description || null,
+      image: body.image || null,
+      createdAt: body.createdAt ? new Date(body.createdAt) : undefined,
+    },
+  });
+
+  return Response.json({ success: true, product: updatedProduct });
 }

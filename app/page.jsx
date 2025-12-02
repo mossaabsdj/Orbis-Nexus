@@ -11,16 +11,23 @@ import CarsPage from "@/app/component/CarsPage/page";
 export default function HomePage() {
   const [selectedFarm, setSelectedFarm] = useState("Home");
   const servicesRef = useRef(null);
+  const CarsRef = useRef(null);
 
   // Smooth scroll to services section
+  // Scroll functions
   const scrollToServices = () => {
-    //  servicesRef.current?.scrollIntoView({ behavior: "smooth" });
+    servicesRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToCars = () => {
+    CarsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <>
       {/* ===== NAVBAR ===== */}
       <NavBar
+        SC={scrollToCars}
+        SS={scrollToServices}
         select={setSelectedFarm}
         selected_from_DescoverPage={selectedFarm}
       />
@@ -42,11 +49,13 @@ export default function HomePage() {
         {/* ===== HERO SECTION ===== */}
         <HeroPage />
         {/* ===== SERVICES SECTION ===== */}
-
-        <ServicesPage />
+        <div ref={servicesRef}>
+          <ServicesPage />
+        </div>
         {/* ===== Cars SECTION ===== */}
-
-        <CarsPage />
+        <div ref={CarsRef}>
+          <CarsPage />
+        </div>
         {/* ===== FOOTER ===== */}
         <footer className="border-t border-neutral-800 py-8 text-center text-gray-500 text-sm relative z-10">
           © 2025 Orbis Nexus. Tous droits réservés.
