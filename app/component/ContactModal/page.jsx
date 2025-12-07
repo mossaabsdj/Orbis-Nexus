@@ -32,7 +32,7 @@ export default function ContactModal({ isOpen, setIsOpen }) {
       link: "tel:+213563263315",
     },
     {
-      id: 2,
+      id: 9,
       icon: Phone,
       label: "Phone",
       value: "+213 559528592",

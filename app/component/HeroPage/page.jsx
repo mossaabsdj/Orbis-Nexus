@@ -3,10 +3,12 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Award, Users, Clock } from "lucide-react";
+import ContactModal from "@/app/component/ContactModal/page";
 
 export default function HomePage() {
   const [selectedFarm, setSelectedFarm] = useState("Home");
   const servicesRef = useRef(null);
+  const [constactModalOpen, setContactModalOpen] = useState(false);
 
   const scrollToServices = () => {
     servicesRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -15,6 +17,10 @@ export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-black via-neutral-900 to-gray-800 text-gray-100">
       {/* Background */}
+      <ContactModal
+        isOpen={constactModalOpen}
+        setIsOpen={setContactModalOpen}
+      />
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-[-5%] left-[-10%] w-[500px] h-[500px] rounded-full bg-gradient-to-r from-gray-600/40 via-gray-700/30 to-gray-800/10 blur-[120px] opacity-70 animate-pulse" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-gray-500/40 via-gray-700/30 to-gray-900/0 blur-[140px] opacity-60 animate-pulse" />
@@ -61,7 +67,10 @@ export default function HomePage() {
               </span>
             </button>
 
-            <button className="px-6 py-4 text-base font-bold border-2 border-neutral-700 text-gray-300 hover:bg-neutral-800 hover:border-neutral-600 hover:text-white rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105">
+            <button
+              onClick={() => setContactModalOpen(true)}
+              className="px-6 py-4 text-base font-bold border-2 border-neutral-700 text-gray-300 hover:bg-neutral-800 hover:border-neutral-600 hover:text-white rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105"
+            >
               Contactez-Nous
             </button>
           </div>
