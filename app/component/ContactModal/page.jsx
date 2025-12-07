@@ -9,6 +9,8 @@ import {
   Linkedin,
   Twitter,
   Github,
+  Instagram,
+  Facebook,
   X,
 } from "lucide-react";
 
@@ -19,53 +21,41 @@ export default function ContactModal({ isOpen, setIsOpen }) {
       id: 1,
       icon: Mail,
       label: "Email",
-      value: "contact@example.com",
-      link: "mailto:contact@example.com",
+      value: "orbis.nexus21@gmail.com",
+      link: "mailto:orbis.nexus21@gmail.com",
     },
     {
       id: 2,
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567",
+      value: "+213 563263315",
+      link: "tel:+213563263315",
+    },
+    {
+      id: 2,
+      icon: Phone,
+      label: "Phone",
+      value: "+213 559528592",
+      link: "tel:+213559528592",
     },
     {
       id: 3,
-      icon: MapPin,
-      label: "Address",
-      value: "123 Business St, Suite 100, New York, NY 10001",
-      link: "https://maps.google.com",
+      icon: Instagram,
+      label: "Instagram",
+      value: "orbis_nexus21",
+      link: "https://www.instagram.com/orbis_nexus21?igsh=YWtxanptMXhtMm1p",
     },
     {
-      id: 4,
-      icon: Globe,
-      label: "Website",
-      value: "www.example.com",
-      link: "https://www.example.com",
+      id: 3,
+      icon: Facebook,
+      label: "Facebook",
+      value: "Orbis nexus",
+      link: "https://www.facebook.com/share/1H5VhfZY9p/",
     },
   ];
 
   // Social media array
-  const socialLinks = [
-    {
-      id: 1,
-      icon: Linkedin,
-      label: "LinkedIn",
-      link: "https://linkedin.com",
-    },
-    {
-      id: 2,
-      icon: Twitter,
-      label: "Twitter",
-      link: "https://twitter.com",
-    },
-    {
-      id: 3,
-      icon: Github,
-      label: "GitHub",
-      link: "https://github.com",
-    },
-  ];
+  const socialLinks = [];
 
   return (
     <div className="">
