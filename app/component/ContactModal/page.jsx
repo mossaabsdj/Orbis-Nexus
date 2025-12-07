@@ -46,7 +46,7 @@ export default function ContactModal({ isOpen, setIsOpen }) {
       link: "https://www.instagram.com/orbis_nexus21?igsh=YWtxanptMXhtMm1p",
     },
     {
-      id: 3,
+      id: 4,
       icon: Facebook,
       label: "Facebook",
       value: "Orbis nexus",

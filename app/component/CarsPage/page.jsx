@@ -279,7 +279,7 @@ export default function CarsCarousel() {
 
                       {/* Hover Glow */}
                       <div
-                        className={`absolute inset-0 z-5 bg-gradient-to-br from-gray-500/20 to-gray-700/20 opacity-0 blur-2xl transition-opacity duration-500 ${
+                        className={`absolute inset-0 z-0 bg-gradient-to-br from-gray-500/20 to-gray-700/20 opacity-0 blur-2xl transition-opacity duration-500 ${
                           hoveredCard === i ? "opacity-30" : ""
                         }`}
                       />
@@ -418,7 +418,7 @@ export default function CarsCarousel() {
 
                       {/* Animated Border */}
                       <div
-                        className={`absolute inset-0 z-20 rounded-3xl transition-opacity duration-500 pointer-events-none ${
+                        className={`absolute inset-0 z-0 rounded-3xl transition-opacity duration-500 pointer-events-none ${
                           hoveredCard === i ? "opacity-100" : "opacity-0"
                         }`}
                       >

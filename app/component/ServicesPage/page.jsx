@@ -174,7 +174,7 @@ export default function ModernServicesPage() {
           {/* Cards Container */}
           <div className="overflow-hidden">
             <div
-              className="flex transition-transform duration-500 ease-out gap-6"
+              className="flex transition-transform duration-500 ease-out "
               style={{
                 transform: `translateX(-${
                   currentIndex * (100 / itemsPerView)
