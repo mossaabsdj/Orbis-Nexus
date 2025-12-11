@@ -244,7 +244,7 @@ export default function CarsCarousel() {
             onTouchEnd={handleTouchEnd}
           >
             <div
-              className="flex transition-transform duration-500 ease-out gap-6"
+              className="flex transition-transform duration-500 ease-out "
               style={{
                 transform: `translateX(-${
                   currentIndex * (100 / itemsPerView)
@@ -395,7 +395,7 @@ export default function CarsCarousel() {
                               <div
                                 className={`text-2xl font-bold bg-gradient-to-r ${THEME.colors.secondary} bg-clip-text text-transparent`}
                               >
-                                {car.price} DA
+                                {car.price} millions
                               </div>
                             </div>
                             <div className="flex items-center gap-4">
